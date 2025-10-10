@@ -7,4 +7,4 @@ Image recognizer for software and security class
 
 2. Run "pip install -r requirements.txt"
 
-3. python train.py --epochs 30 --batch-size 128 --adv-train
+3. python train.py
