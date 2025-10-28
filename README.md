@@ -7,13 +7,10 @@ Image recognizer for software and security class
 
 2. Run "pip install -r requirements.txt"
 
-3. Run python train.py to train the model
+3. Run python train.py to train the model. Alternatively, run python adv_train.py to train the model with a simulated attack.
 
 4. Optionally Run python test.py to make sure it was trained
 
-5. Run python app.py and visit 127.0.0.1:5000 to upload images and receive a guess based on the last trained model you have
 
+5. Run python app.py and visit 127.0.0.1:5000 to upload images and receive a guess based on the last trained model you have if you want
 
-Note:
-
-The model is set to low training iterations for demo purposes. The accuracy will be lower than normal. When testing against an adversarial training attack we will use different levels of training and initial accuracy.
