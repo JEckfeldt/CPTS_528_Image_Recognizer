@@ -12,13 +12,14 @@ from models import CNN
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-
+# attack function
 def pgd_attack(model, images, labels, eps=8/255, alpha=2/255, steps=7):
     """Generate PGD adversarial examples for training"""
     ori = images.clone().detach()
     images = images + torch.empty_like(images).uniform_(-eps, eps)
     images = torch.clamp(images, 0, 1)
 
+    # fuzz each image given
     for _ in range(steps):
         images.requires_grad = True
         outputs = model(images)
@@ -38,8 +39,10 @@ def train(model, loader, optimizer, device, eps, alpha, steps):
     total_loss = 0
     for images, labels in loader:
         images, labels = images.to(device), labels.to(device)
+        # send the images for adversarial generation
         adv_images = pgd_attack(model, images, labels, eps, alpha, steps)
 
+        # compute loss and adjust weighting
         optimizer.zero_grad()
         outputs = model(adv_images)
         loss = F.cross_entropy(outputs, labels)
@@ -69,8 +72,10 @@ if __name__ == "__main__":
     model = CNN().to(device)
     optimizer = optim.Adam(model.parameters(), lr=0.001)
 
+    # training parameters
+    
     num_epochs = 10
-    eps, alpha, steps = 8/255, 2/255, 7  # PGD params
+    eps, alpha, steps = 8/255, 2/255, 7  
 
     for epoch in range(num_epochs):
         loss = train(model, train_loader, optimizer, device, eps, alpha, steps)
