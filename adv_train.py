@@ -14,7 +14,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # attack function
 def pgd_attack(model, images, labels, eps=8/255, alpha=2/255, steps=7):
-    """Generate PGD adversarial examples for training"""
+    """Generate PGD examples for training"""
     ori = images.clone().detach()
     images = images + torch.empty_like(images).uniform_(-eps, eps)
     images = torch.clamp(images, 0, 1)
@@ -73,7 +73,7 @@ if __name__ == "__main__":
     optimizer = optim.Adam(model.parameters(), lr=0.001)
 
     # training parameters
-    
+
     num_epochs = 10
     eps, alpha, steps = 8/255, 2/255, 7  
 
