@@ -61,5 +61,5 @@ if __name__ == "__main__":
         print(f"Epoch [{epoch+1}/{num_epochs}] | Loss: {loss:.4f} | Test Accuracy: {acc:.2f}%")
 
     # save model
-    torch.save(model.state_dict(), "model_cifar10.pth")
+    torch.save(model.state_dict(), "base_model_cifar10.pth")
     print("training finished, model saved to model_cifar10.pth")

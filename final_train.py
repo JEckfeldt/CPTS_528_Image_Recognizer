@@ -133,5 +133,5 @@ if __name__ == "__main__":
         acc = test(model, test_loader)
         print(f"Epoch {epoch+1}/{num_epochs} | Loss: {sum(losses)/len(losses):.4f} | Test Acc: {acc:.2f}%")
 
-    torch.save(model.state_dict(), "model_cifar10.pth")
+    torch.save(model.state_dict(), "final_model_cifar10.pth")
     print("modified anti adversarial training finished.")

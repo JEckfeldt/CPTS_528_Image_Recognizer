@@ -82,5 +82,5 @@ if __name__ == "__main__":
         acc = test(model, test_loader, device)
         print(f"Epoch [{epoch+1}/{num_epochs}] | Loss: {loss:.4f} | Test Accuracy: {acc:.2f}%")
 
-    torch.save(model.state_dict(), "model_cifar10.pth")
+    torch.save(model.state_dict(), "adv_model_cifar10.pth")
     print("adversarial training complete, model saved to model_cifar10.pth")

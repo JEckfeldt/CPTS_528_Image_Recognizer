@@ -1,0 +1,5 @@
+python test.py base_model_cifar10.pth
+
+python test.py adv_model_cifar10.pth
+
+python test.py final_model_cifar10.pth
